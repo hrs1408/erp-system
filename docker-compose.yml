@@ -1,0 +1,142 @@
+version: '3.8'
+
+services:
+  # Host Application
+  host:
+    build:
+      context: ./host
+      dockerfile: Dockerfile
+    container_name: erp-host
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./host:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # Auth Micro Frontend
+  auth:
+    build:
+      context: ./micro-frontends/auth
+      dockerfile: Dockerfile
+    container_name: erp-auth
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./micro-frontends/auth:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # Dashboard Micro Frontend
+  dashboard:
+    build:
+      context: ./micro-frontends/dashboard
+      dockerfile: Dockerfile
+    container_name: erp-dashboard
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./micro-frontends/dashboard:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # Inventory Micro Frontend
+  inventory:
+    build:
+      context: ./micro-frontends/inventory
+      dockerfile: Dockerfile
+    container_name: erp-inventory
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./micro-frontends/inventory:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # Sales Micro Frontend
+  sales:
+    build:
+      context: ./micro-frontends/sales
+      dockerfile: Dockerfile
+    container_name: erp-sales
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./micro-frontends/sales:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # HR Micro Frontend
+  hr:
+    build:
+      context: ./micro-frontends/hr
+      dockerfile: Dockerfile
+    container_name: erp-hr
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./micro-frontends/hr:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # Finance Micro Frontend
+  finance:
+    build:
+      context: ./micro-frontends/finance
+      dockerfile: Dockerfile
+    container_name: erp-finance
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3006:3006"
+    volumes:
+      - ./micro-frontends/finance:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+  # Reports Micro Frontend
+  reports:
+    build:
+      context: ./micro-frontends/reports
+      dockerfile: Dockerfile
+    container_name: erp-reports
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3007:3007"
+    volumes:
+      - ./micro-frontends/reports:/app
+      - /app/node_modules
+    networks:
+      - erp-network
+
+networks:
+  erp-network:
+    driver: bridge 

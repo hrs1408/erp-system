@@ -1,0 +1,79 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="card-header">
+      <h2 class="card-title">Đăng nhập hệ thống ERP</h2>
+      <p class="card-subtitle">Vui lòng nhập thông tin đăng nhập</p>
+    </div>
+    
+    <div class="card-content">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+          <label class="form-label">Tên đăng nhập hoặc Email</label>
+          <div class="input-group">
+            <input 
+              type="text" 
+              formControlName="username" 
+              placeholder="admin"
+              class="form-input">
+            <span class="input-icon">👤</span>
+          </div>
+          <div class="error-message" *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
+            Tên đăng nhập là bắt buộc
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Mật khẩu</label>
+          <div class="input-group">
+            <input 
+              type="password" 
+              formControlName="password" 
+              placeholder="Nhập mật khẩu"
+              class="form-input">
+            <span class="input-icon">🔒</span>
+          </div>
+          <div class="error-message" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+            Mật khẩu là bắt buộc
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="rememberMe" class="checkbox-input">
+            <span class="checkbox-text">Ghi nhớ đăng nhập</span>
+          </label>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-primary full-width"
+          [disabled]="loginForm.invalid || isLoading">
+          <div class="spinner" *ngIf="isLoading"></div>
+          <span *ngIf="!isLoading">Đăng nhập</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="card-actions">
+      <a routerLink="/auth/register" class="btn btn-link">
+        Chưa có tài khoản? Đăng ký ngay
+      </a>
+      <button class="btn btn-link">
+        Quên mật khẩu?
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-accounts">
+    <h3>Tài khoản demo:</h3>
+    <div class="account-item">
+      <strong>Admin:</strong> admin / any password
+    </div>
+    <div class="account-item">
+      <strong>Manager:</strong> manager / any password
+    </div>
+    <div class="account-item">
+      <strong>Employee:</strong> employee / any password
+    </div>
+  </div>
+</div> 

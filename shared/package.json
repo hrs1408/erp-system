@@ -1,0 +1,39 @@
+{
+  "name": "@erp/shared",
+  "version": "1.0.0",
+  "description": "Thư viện dùng chung cho hệ thống ERP",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "ng build",
+    "build:watch": "ng build --watch",
+    "test": "ng test",
+    "lint": "ng lint"
+  },
+  "keywords": ["angular", "shared", "erp"],
+  "author": "ERP Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@angular/material": "^17.0.0",
+    "@ngrx/store": "^17.0.0",
+    "@ngrx/effects": "^17.0.0",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@angular/material": "^17.0.0",
+    "@ngrx/store": "^17.0.0",
+    "@ngrx/effects": "^17.0.0",
+    "rxjs": "^7.8.0",
+    "typescript": "~5.2.0"
+  }
+} 

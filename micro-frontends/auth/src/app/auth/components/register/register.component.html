@@ -1,0 +1,98 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="card-header">
+      <h2 class="card-title">Tạo tài khoản</h2>
+      <p class="card-subtitle">Tham gia hệ thống ERP</p>
+    </div>
+    
+    <div class="card-content">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+          <label class="form-label">Họ và tên</label>
+          <div class="input-group">
+            <input 
+              type="text" 
+              formControlName="fullName" 
+              placeholder="Nhập họ và tên"
+              class="form-input">
+            <span class="input-icon">👤</span>
+          </div>
+          <div class="error-message" *ngIf="registerForm.get('fullName')?.hasError('required') && registerForm.get('fullName')?.touched">
+            Họ và tên là bắt buộc
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <div class="input-group">
+            <input 
+              type="email" 
+              formControlName="email" 
+              placeholder="Nhập email"
+              class="form-input">
+            <span class="input-icon">📧</span>
+          </div>
+          <div class="error-message" *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+            Email là bắt buộc
+          </div>
+          <div class="error-message" *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+            Vui lòng nhập email hợp lệ
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Mật khẩu</label>
+          <div class="input-group">
+            <input 
+              type="password" 
+              formControlName="password" 
+              placeholder="Nhập mật khẩu"
+              class="form-input">
+            <span class="input-icon">🔒</span>
+          </div>
+          <div class="error-message" *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+            Mật khẩu là bắt buộc
+          </div>
+          <div class="error-message" *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched">
+            Mật khẩu phải có ít nhất 6 ký tự
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Xác nhận mật khẩu</label>
+          <div class="input-group">
+            <input 
+              type="password" 
+              formControlName="confirmPassword" 
+              placeholder="Xác nhận mật khẩu"
+              class="form-input">
+            <span class="input-icon">🔒</span>
+          </div>
+          <div class="error-message" *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
+            Vui lòng xác nhận mật khẩu
+          </div>
+          <div class="error-message" *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+            Mật khẩu không khớp
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="btn btn-primary full-width"
+            [disabled]="registerForm.invalid || isLoading">
+            <div class="spinner" *ngIf="isLoading"></div>
+            <span *ngIf="!isLoading">Tạo tài khoản</span>
+            <span *ngIf="isLoading">Đang tạo...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="card-actions">
+      <button class="btn btn-link" (click)="goToLogin()">
+        Đã có tài khoản? Đăng nhập
+      </button>
+    </div>
+  </div>
+</div> 
