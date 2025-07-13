@@ -11,7 +11,7 @@ echo.
 echo Starting all microservices...
 echo.
 
-echo [1/8] Starting Host Application (Port 4200)...
+echo [1/8] Starting Host Application (Port 3000)...
 start "Host App" cmd /k "cd host && npm start"
 
 echo [2/8] Starting Auth Microservice (Port 3001)...
@@ -41,7 +41,7 @@ echo    All services are starting...
 echo ========================================
 echo.
 echo Services will be available at:
-echo - Host App:        http://localhost:4200
+echo - Host App:        http://localhost:3000
 echo - Auth Service:    http://localhost:3001
 echo - Dashboard:       http://localhost:3002
 echo - Inventory:       http://localhost:3003
